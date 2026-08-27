@@ -13,7 +13,7 @@
 
 extern t_log *logger;
 
-int conectar_a_modulo(char *ip, int puerto, char *nombre_modulo_destino)
+int conectar_a_modulo(char *ip, int puerto, char *nombre_modulo_destino, op_code mi_handshake)
 {
     char puerto_str[16];
     snprintf(puerto_str, sizeof(puerto_str), "%d", puerto);
@@ -52,9 +52,8 @@ int conectar_a_modulo(char *ip, int puerto, char *nombre_modulo_destino)
 
     log_info(logger, "Conexión establecida con %s (%s:%d)", nombre_modulo_destino, ip, puerto);
 
-    // El planificador es siempre quien se identifica como
-    // HANDSHAKE_PLANIFICADOR frente a Placa/Storage.
-    if (realizar_handshake_cliente(socket_cliente, HANDSHAKE_PLANIFICADOR) == -1)
+    // Se utiliza el parámetro genérico mi_handshake para identificarse
+    if (realizar_handshake_cliente(socket_cliente, mi_handshake) == -1)
     {
         log_error(logger, "Falló el handshake con %s", nombre_modulo_destino);
         close(socket_cliente);
