@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200112L 
+
 #include "../include/cliente.h"
 #include "../include/protocolo.h"
 
