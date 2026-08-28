@@ -1,6 +1,0 @@
-# Job de ejemplo para CC1.
-# En CC1 este archivo solo se referencia por path; el parseo real
-# del pseudocódigo/instrucciones del job queda para CC2.
-NOOP
-NOOP
-EXIT
